@@ -2,15 +2,21 @@ package com.hackaton.retail_backend.repository;
 
 import com.hackaton.retail_backend.model.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
+<<<<<<< HEAD
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+=======
+import org.springframework.stereotype.Repository;
+
+>>>>>>> feature/003-recommendation-service
 import java.util.List;
 
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Long> {
+<<<<<<< HEAD
 
     @Query("""
         SELECT st.product.id, st.product.name, st.product.barcode,
@@ -31,3 +37,8 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
             @Param("startDate") LocalDateTime startDate
     );
 }
+=======
+    List<Stock> findByStoreId(Long storeId);
+}
+
+>>>>>>> feature/003-recommendation-service
