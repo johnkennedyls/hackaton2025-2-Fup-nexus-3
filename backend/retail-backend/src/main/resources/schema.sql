@@ -1,5 +1,5 @@
 -- =============================================
--- CORE TABLES FOR SPRING BOOT MVC
+-- CORE TABLES FOR SPRING BOOT MVC (H2 COMPATIBLE)
 -- =============================================
 
 -- Master tables
@@ -56,7 +56,7 @@ CREATE TABLE sale_item (
     size_id INTEGER NOT NULL REFERENCES size(id),
     quantity INTEGER NOT NULL CHECK (quantity > 0),
     unit_price DECIMAL(10,2) NOT NULL CHECK (unit_price > 0),
-    subtotal DECIMAL(12,2) GENERATED ALWAYS AS (quantity * unit_price) STORED
+    subtotal DECIMAL(12,2) GENERATED ALWAYS AS (quantity * unit_price)
 );
 
 CREATE TABLE stock (
@@ -74,43 +74,21 @@ CREATE TABLE stock (
 -- BASIC INDEXES FOR PERFORMANCE
 -- =============================================
 
--- Product indexes
 CREATE INDEX idx_product_name ON product(name);
 CREATE INDEX idx_product_barcode ON product(barcode);
 CREATE INDEX idx_product_category ON product(category_id);
 CREATE INDEX idx_product_gender ON product(gender_id);
-CREATE INDEX idx_product_active ON product(is_active) WHERE is_active = true;
+CREATE INDEX idx_product_active ON product(is_active);
 
--- Sale indexes
 CREATE INDEX idx_sale_store ON sale(store_id);
 CREATE INDEX idx_sale_date ON sale(sale_date);
 CREATE INDEX idx_sale_store_date ON sale(store_id, sale_date);
 
--- Sale item indexes
 CREATE INDEX idx_sale_item_sale ON sale_item(sale_id);
 CREATE INDEX idx_sale_item_product ON sale_item(product_id);
 
--- Stock indexes
 CREATE INDEX idx_stock_product ON stock(product_id);
 CREATE INDEX idx_stock_store ON stock(store_id);
 CREATE INDEX idx_stock_product_store ON stock(product_id, store_id);
-CREATE INDEX idx_stock_low ON stock(store_id) WHERE quantity < min_stock;
-
--- =============================================
--- TRIGGER FOR UPDATING LAST_MODIFIED
--- =============================================
-
-CREATE OR REPLACE FUNCTION update_last_modified()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.last_modified = CURRENT_TIMESTAMP;
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-CREATE TRIGGER product_last_modified
-    BEFORE UPDATE ON product
-    FOR EACH ROW
-    EXECUTE FUNCTION update_last_modified();
 
 COMMIT;
