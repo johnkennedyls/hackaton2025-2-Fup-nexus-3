@@ -1,0 +1,61 @@
+﻿Título,Descripción,Etiquetas,Lista
+Diseñar modelo de datos (ER),"Como arquitecto de datos quiero diseñar el modelo entidad-relación para la base de datos PostgreSQL para almacenar productos, ventas, inventario, sucursales y categorías para asegurar integridad y consultas eficientes.
+
+Criterios de aceptación:
+- Diagrama ER con entidades y relaciones principales (products, sales, inventory, branches, categories).
+- Definición de llaves primarias y foráneas y tipos de datos.
+- Documento o imagen del ER disponible en el repositorio.","data-model, RF1, alta prioridad",Por hacer
+Crear migraciones DDL para PostgreSQL,"Como desarrollador backend quiero el script SQL (migrations) para crear las tablas y constraints en PostgreSQL para poder levantar la base de datos en cualquier entorno.
+
+Criterios de aceptación:
+- Scripts SQL para crear tablas principales y constraints.
+- Scripts para borrar/rollback.
+- Instrucciones para ejecutar las migraciones.","backend, sql, RF1",Por hacer
+Implementar entidades JPA y repositorios,"Como desarrollador backend quiero crear las entidades JPA y los repositorios Spring Data para products, sales e inventory para facilitar el acceso a datos.
+
+Criterios de aceptación:
+- Clases @Entity con mappings correctos.
+- Repositorios que extienden JpaRepository.
+- Tests unitarios básicos para repositorios.","backend, spring, jpa, RF1",Por hacer
+Implementar servicios y lógica de negocio (MVC),"Como desarrollador backend quiero implementar la capa de servicios que contiene la lógica para validar importaciones y calcular KPIs, separada del controlador.
+
+Criterios de aceptación:
+- Servicios con métodos para procesar import, cálculo de top-products y rotación.
+- Controllers que exponen endpoints REST y delegan en servicios.
+- Manejo de errores y respuestas HTTP adecuadas.","backend, spring, service, RF2",Por hacer
+Crear controladores REST y endpoints CRUD,"Como desarrollador quiero controladores REST en Spring Boot que expongan endpoints para importación, KPIs y recomendaciones para que el frontend los consuma.
+
+Criterios de aceptación:
+- Endpoints documentados en Swagger.
+- Endpoints: /api/imports, /api/kpis/top-products, /api/recommendations.
+- Pruebas de integración básicas.","backend, api, swagger",Por hacer
+Autenticación básica (JWT) en backend,"Como administrador quiero un sistema de autenticación con JWT para proteger endpoints sensibles y permitir roles (admin/analista) para controlar accesos.
+
+Criterios de aceptación:
+- Endpoint /auth/login que devuelve JWT.
+- Filtros de seguridad que protegen rutas de import.
+- Roles simples implementados y documentados.","backend, auth, seguridad, RF6",Por hacer
+Crear frontend básico (React) - estructura,"Como desarrollador frontend quiero la estructura base de la app en React con rutas, autenticación simple y páginas principales (Login, Dashboard, Import) para comenzar la UI.
+
+Criterios de aceptación:
+- Proyecto React inicializado (create-react-app / Vite).
+- Rutas: /login, /dashboard, /import.
+- Componente de layout y navegación básica.","frontend, React, RF3",Por hacer
+Implementar llamadas API desde frontend,"Como desarrollador frontend quiero integrar las llamadas a los endpoints REST (import, KPIs, recommendations) desde React para mostrar datos reales en el dashboard.
+
+Criterios de aceptación:
+- Servicio HTTP (axios/fetch) para llamar al backend.
+- Mostrar Top N productos en el dashboard usando datos reales.
+- Manejo básico de errores y estado de carga.","frontend, api, RF3",Por hacer
+Implementar componentes de visualización (charts),"Como diseñador de UI quiero componentes de gráficos (barras, líneas, pastel) en el dashboard usando Recharts/Chart.js para representar KPIs visualmente.
+
+Criterios de aceptación:
+- Implementar al menos 3 tipos de gráficas con datos reales.
+- Componentes reutilizables y responsivos.
+- Filtros conectados que actualizan las gráficas.","frontend, charts, RF3",Por hacer
+Documentar how-to run local (README),"Como desarrollador quiero un README con los pasos para levantar backend (Spring Boot) y frontend (React) localmente para que el equipo pruebe la solución.
+
+Criterios de aceptación:
+- Pasos para configurar base de datos y ejecutar migraciones.
+- Comandos para iniciar backend y frontend.
+- Variables de entorno necesarias documentadas.","docs, onboarding, alta prioridad",Por hacer
