@@ -1,0 +1,76 @@
+﻿Título,Descripción,Etiquetas,Lista
+Cargar datos históricos desde archivo,"Como analista de inventario quiero subir un archivo CSV o JSON con datos históricos de ventas e inventario para simular y analizar el comportamiento de las ventas.
+
+Criterios de aceptación:
+- Se puede subir un archivo desde la interfaz web.
+- El backend valida formato, campos requeridos y coherencia de datos.
+- Los datos válidos se almacenan en PostgreSQL.
+- Si hay errores, se muestra un resumen de registros con error.","RF1, backend, import, alta prioridad",Por hacer
+Validación automática de datos cargados,"Como usuario que carga información quiero que el sistema valide automáticamente los datos del archivo para evitar errores de cálculo en los KPIs.
+
+Criterios de aceptación:
+- Se validan tipos de datos, fechas y valores numéricos.
+- Se verifica que stock final = stock inicial − ventas.
+- Se genera un reporte de validación.","RF1, backend, validación",Por hacer
+Calcular productos más vendidos,"Como analista comercial quiero ver un Top N de productos más vendidos para identificar cuáles generan más rotación.
+
+Criterios de aceptación:
+- Selección por rango de fechas o mes.
+- Ordenado por cantidad vendida.
+- Filtrable por tipo de ropa, género o sucursal.","RF2, KPI, ventas, dashboard",Por hacer
+Calcular tallas con mayor salida,"Como gerente de tienda quiero conocer las tallas más vendidas por tipo de prenda y género para optimizar la planeación de stock.
+
+Criterios de aceptación:
+- Mostrar tallas con mayor volumen de venta.
+- Filtrar por tipo de ropa y género.
+- Visualizar en gráfica de barras.","RF2, KPI, dashboard",Por hacer
+Comparar rendimiento por segmento,"Como analista de marketing quiero comparar las ventas por género y grupo de edad para identificar los segmentos con mejor rendimiento.
+
+Criterios de aceptación:
+- Comparaciones entre géneros y edades.
+- Filtrable por periodo.
+- Gráfica de barras o pastel.","RF2, KPI, comparativos",Por hacer
+Calcular rotación de inventario,"Como analista de inventario quiero conocer el porcentaje de rotación por tipo de prenda para detectar productos con baja o alta rotación.
+
+Criterios de aceptación:
+- Calcular rotación según ventas y stock promedio.
+- Marcar productos con Alta o Baja rotación.
+- Permitir exportar resultados.","RF2, inventario, rotación, export",En progreso
+Visualizar KPIs en dashboard,"Como usuario del sistema quiero ver los indicadores clave en un dashboard interactivo para analizar la información visualmente.
+
+Criterios de aceptación:
+- Dashboard en React.
+- Gráficas de barras, líneas, pastel y KPI.
+- Actualización en tiempo real con filtros.","RF3, frontend, React, visualización",En progreso
+Aplicar filtros dinámicos,"Como usuario del dashboard quiero aplicar filtros de categoría, género, talla y periodo para obtener información segmentada.
+
+Criterios de aceptación:
+- Filtros sin recargar la página.
+- Todas las gráficas se actualizan simultáneamente.","RF3, frontend, filtros",En progreso
+Generar recomendaciones automáticas,"Como encargado de inventario quiero recibir recomendaciones automáticas de reposición o promoción para tomar decisiones rápidas.
+
+Criterios de aceptación:
+- Alta rotación + poco stock → Reposición.
+- Baja rotación o sobrestock → Promoción.
+- Recomendaciones visibles en dashboard.","RF4, IA, recomendaciones, alta prioridad",Por probar
+Autenticación básica de usuarios,"Como usuario registrado quiero iniciar sesión antes de acceder al sistema para proteger la información y controlar accesos.
+
+Criterios de aceptación:
+- Login con JWT o sesiones.
+- Solo usuarios autenticados acceden al dashboard y carga de datos.","RF6, seguridad, auth",Por probar
+Exportar resultados,"Como analista quiero descargar los KPIs visibles en el dashboard para generar reportes y presentaciones.
+
+Criterios de aceptación:
+- Botón Exportar descarga CSV o Excel.
+- Incluye fecha y filtros aplicados.","RF7, export, reportes",Hecho
+Recomendación enriquecida con IA (opcional),"Como responsable de marketing quiero recibir recomendaciones generadas por IA para comunicar mejor las promociones.
+
+Criterios de aceptación:
+- Integración con Hugging Face.
+- Genera descripción breve de la acción.
+- Texto visible junto a la recomendación.","RF4, IA, opcional",Backlog
+API REST y documentación,"Como desarrollador quiero tener endpoints documentados en Swagger para consumir fácilmente los servicios desde el frontend.
+
+Criterios de aceptación:
+- Endpoints disponibles para carga, KPIs y recomendaciones.
+- Documentación en Swagger/OpenAPI.","RF5, backend, API, Swagger",Backlog
